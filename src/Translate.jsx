@@ -28,14 +28,8 @@ class Translate extends Component {
     };
 
     translateText = (textToTranslate) => {
-        fetch('https://api.funtranslations.com/translate/pirate.json?text=hello%20there%20friend', {
+        fetch('https://api.funtranslations.com/translate/pirate.json?text=' + textToTranslate.split(' ').join('%20'), {
 			method: 'GET',
-			// headers: { 
-			// 	'Content-Type': 'application/json'
-			// },
-			// body: JSON.stringify({
-			// 	text: textToTranslate,
-			// })  
 		})
 		.then((response) => response.json())
         
@@ -44,8 +38,8 @@ class Translate extends Component {
 			this.setState({
 				translatedText: data.contents.translated
 			})
+        alert(data.contents.translated);
 		});
-        // alert(this.state.translatedText);
     };
 }
 
